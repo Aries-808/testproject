@@ -11,10 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-<<<<<<< HEAD:testproject/testproject/wsgi.py
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testproject.settings')
 
-=======
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lasustechrepo.settings')
->>>>>>> laspotech_project/panywhere:lasustechrepo/lasustechrepo/wsgi.py
 application = get_wsgi_application()

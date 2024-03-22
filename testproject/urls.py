@@ -20,17 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD:testproject/testproject/urls.py
     path('', include('research_repo_app.urls'))
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-=======
-    path('', include('research_repo_app.urls')),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-
-urlpatterns + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
->>>>>>> laspotech_project/panywhere:lasustechrepo/lasustechrepo/urls.py

@@ -1,16 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Submit Research Data</title>
-  </head>
-  <body>
-    {% load crispy_forms_tags %}
-    <h1>Sign in</h1>
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %} {{ form }}
-      <button type="submit">Submit</button>
-    </form>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Add additional styles or link to your custom stylesheet here -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .signup-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+        }
+
+        .signup-form img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .signup-form h3 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-create-account {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="signup-form">
+                <div class="text-center mb-4">
+                    <img src="https://th.bing.com/th/id/Rd51d7c0fde6d96a31538a86cbd57f3c0?rik=%2fTJxRkU2V371QQ&riu=http%3a%2f%2ftechnologyend.com%2fwp-content%2fuploads%2f2015%2f11%2fwhy-shop-online.jpg&ehk=v1KiYT0i5U1ABCRueDSdLqnazh2BdlVD89Z4qXE0Kgs%3d&risl=&pid=ImgRaw" alt="Logo">
+                    <h3 class="mb-3">Create an Account</h3>
+                </div>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="username">user Name</label>
+                        <input type="text" name="username" id="username" value="{{ values.user_name }}" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password1">Enter Password</label>
+                        <input type="password" name="password1" id="password1" class="form-control" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="password2">Re-enter Password</label>
+                        <input type="password" name="password2" id="password2" class="form-control" required>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-block btn-create-account">Create an account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
 </html>

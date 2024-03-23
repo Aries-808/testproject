@@ -1,8 +1,152 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Home{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laspotech University Repository</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f0f0f0; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ffffff, #f0f0f0); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #ffffff, #f0f0f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
 
-{% block content %}
-<h1>Welcome to Your Site</h1>
-<p>This is the main page of your site.</p>
-{% endblock %}
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            background-color: #fff;
+        }
+
+        .navbar-toggler {
+            border-color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #4286f4;
+        }
+
+        .jumbotron {
+            background: url('https://via.placeholder.com/1200x600') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .jumbotron p {
+            font-size: 20px;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/">Laspotech University Repository</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Upload</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/submit/thesis/">Submit Thesis</a>
+                        <a class="dropdown-item" href="/submit/research_paper/">Submit Research Paper</a>
+                        <a class="dropdown-item" href="/submit/research_data/">Submit Research Data</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/research_papers/">Research Paper List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/theses/">Thesis List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register/">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to Your University Repository</h1>
+            <p>This is the main page of your site. Start exploring and contributing to academic knowledge!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Explore Our Repository</h2>
+        <!-- Add more content here -->
+        <h3>Theses</h3>
+        <div class="row">
+            {% for thesis in theses %}
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ thesis.title }}</h5>
+                        <p class="card-text">{{ thesis.description }}</p>
+                        <a href="{% url 'thesis_details' thesis.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <h3>Research</h3>
+        
+        <div class="row">
+            {% for research_paper in research_papers %}
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ research_paper.title }}</h5>
+                        <p class="card-text">{{ research_paper.description }}</p>
+                        <a href="{% url 'research_details' research_paper.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

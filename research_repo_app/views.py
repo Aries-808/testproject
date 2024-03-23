@@ -47,7 +47,9 @@ def submit_research_data(request):
     return render(request, "submit_research_data.html", context)
 
 def index(request):
-    return render(request,'index.html')
+    theses = Thesis.objects.all()
+    research_papers = ResearchPaper.objects.all()
+    return render(request,'index.html',{'theses': theses,'research_papers': research_papers})
 
 @login_required
 def submit_thesis(request):
@@ -101,9 +103,6 @@ def research_details(request, paper_id):
     associated_research_data = ResearchData.objects.filter(title=research_paper)
     return render(request, 'research_details.html', {'research_paper': research_paper, 'associated_research_data': associated_research_data})
 
-def thesis_list(request):
-    theses = Thesis.objects.all()
-    return render(request, 'thesis_list.html', {'theses': theses})
 
 def thesis_details(request, thesis_id):
     thesis = get_object_or_404(Thesis, pk=thesis_id)

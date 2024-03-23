@@ -20,12 +20,8 @@
   <div class="col-md-4 mb-4">
     <div class="card">
       <div class="card-body">
-        {% if research_data.data_file.url|lower|endswith:'.jpg' or research_data.data_file.url|lower|endswith:'.jpeg' or research_data.data_file.url|lower|endswith:'.png' or research_data.data_file.url|lower|endswith:'.gif' %}
-          <!-- <img src="{{ research_data.data_file.url }}" class="card-img-top" alt="{{ research_data.title }}"> -->
-          <object data="{{ research_data.data_file.url }}"  class="card-img-top"></object>
-        {% else %}
-          <h5 class="card-title">{{ research_data.title }}</h5>
-        {% endif %}
+                  <!-- <img src="{{ research_data.data_file.url }}" class="card-img-top" alt="{{ research_data.title }}"> -->
+        <object data="{{ research_data.data_file.url }}"  class="card-img-top"></object>
         <div class="card-footer">
           <a href="{{ research_data.data_file.url }}" class="btn btn-primary" download>Download</a>
         </div>
